@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>View-Employee</title>
+    {% load static %}
+    <!-- BOOTSTRAP STYLES-->
+    <script src="{% static 'admin/js/sweetalert.min.js' %}"></script>
+    <link href="{% static 'admin/css/bootstrap.css' %}" rel="stylesheet" />
+    <!-- FONTAWESOME STYLES-->
+    <link href="{% static 'admin/css/font-awesome.css' %}" rel="stylesheet" />
+       <!--CUSTOM BASIC STYLES-->
+    <link href="{% static 'admin/css/basic.css' %}" rel="stylesheet" />
+    <link href="{% static 'admin/css/employee-myproject.css' %}" rel="stylesheet" />
+    <!--CUSTOM MAIN STYLES-->
+    <link href="{% static 'admin/css/custom.css' %}" rel="stylesheet" />
+    
+    <!-- GOOGLE FONTS-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+</head>
+<body>
+    <div id="wrapper">
+        <div class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Codebook</a>
+            </div>
+
+            <div class="header-right">
+
+                <a href="login.html" class="btn " title="Logout"><i class="fa fa-signin fa-2x"></i></a>
+
+            </div>
+        </div>
+        <!-- /. NAV TOP  -->
+        <div class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+                    <li>
+                        {% for j in obj %}
+                        <div class="user-img-div">
+                            <img src="/media/{{j.emp_photo}}" width="80px" height="80px"  class="img-thumbnail" />
+
+                            <div class="inner-text">
+                                {{j.emp_name}}
+                            <br />
+                                <small>{{j.emp_designation}} </small>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </li>
+
+
+                    <li>
+                        <a  href="{% url 'manager_dashboard' %}"><i class="fa fa-dashboard "></i>Dashboard</a>
+                    </li>
+                    
+                    <li>
+                        <a href="{% url 'view_emp' %}"><i class="fa fa-plus "></i>View Employee</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'view_project' %}"><i class="fa fa-eye "></i>View My Project</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'assign_project' %}"><i class="fa fa-flash "></i> Assign project</a>
+                        
+                    </li>
+                    <li>
+                        <a href="{% url 'add_task' %}"><i class="fa fa-flash "></i>Add Task </a>
+                        
+                    </li>
+             
+                    <li>
+                        <a  href="{% url 'view_task' %}"><i class="fa fa-flash "></i>view Task </a>
+                        
+                    </li>
+                    <li>
+                        <a href="{% url 'task_status' %}"><i class="fa fa-flash "></i> Task Status </a>
+                        
+                    </li>
+                    <li>
+                        <a href="{% url 'project_status' %}"><i class="fa fa-flash "></i> Project Status </a>
+                        
+                    </li>
+            
+             
+                    <li>
+                        <a href="{% url 'manager_login' %}"><i class="fa fa-sign-in "></i>Logout</a>
+                    </li> 
+                 
+                </ul>
+
+            </div>
+        </div>
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper">
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-head-line">View EMPLOYEE</h1>
+                        <h1 class="page-subhead-line"> Welcome you on behalf of the team and hope that we will have a fantastic time working together. </h1>
+                        <div  style="padding: 80px;"  >
+                            <section class="section about-section gray-bg" id="about" >
+                                {% for i in data %}
+                                <div class="container" >
+                                    <div class="row align-items-center flex-row-reverse"  >
+                                        <div  class="col-lg-6" >
+                                           
+                                            <div  class="about-text go-to";id="new1">
+                                                
+                                               
+                                                
+                                                
+                                                <div class="row about-list;" >
+                                                    <div class="col-md-6">
+                                                        <div class="media">
+                                                            <p><b>Name</b> : {{i.emp_name}} </p>
+                                                            
+                                                        </div>
+                                                        <div class="media">
+                                                            <p><b>Phone No</b> : {{i.emp_phone}}</p>
+                                                            
+                                                        </div>
+                                                        <div class="media">
+                                                            <p><b>Email</b> : {{i.emp_email}}</p>
+                                                            <p></p>
+                                                        </div>
+                                                        <div class="media">
+                                                            <p><b>Gender</b> : {{i.emp_gender}}</p>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="media">
+                                                            <p><b>Date Of Birth</b> : {{i.emp_date_birth}}</p>
+                                                          
+                                                        </div>
+                                                        <div class="media">
+                                                            <p><b>Qualification</b> : {{i.emp_education}}</p>
+                                                            
+                                                        </div>
+                                                        <div class="media">
+                                                            <p><b>Designation</b> : {{i.emp_designation}}</p>
+                                                            
+                                                        </div>
+                                                        <div class="media">
+                                                            <p><b>Address</b> : {{i.emp_addres}}</p>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                               
+                                            </div>
+                                        </div>
+                                       
+                                        <div class="col-lg-6">
+                                            <div class="about-avatar">
+                                                <img src="/media/{{i.emp_photo}}" width="300px" height="300px" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    
+                                    
+                                   
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </section>
+                        </div>
+                        
+                    </div>
+                </div>
+                    
+                  
+                </div>
+                <!-- /. ROW  -->
+                    
+                
+
+
+                    </div>
+                </div>
+                
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+    <!-- /. WRAPPER  -->
+
+    <div id="footer-sec">
+        &copy; 2014 Codebook | Design By : <a href="https://www.codebook.in/" target="_blank">Codebook.in</a>
+    </div>
+    <!-- /. FOOTER  -->
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+    <script src="{% static 'admin/js/jquery-1.10.2.js' %}"></script>
+    <!-- BOOTSTRAP SCRIPTS -->
+    <script src="{% static 'admin/js/bootstrap.js' %}"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="{% static 'admin/js/jquery.metisMenu.js' %}"></script>
+       <!-- CUSTOM SCRIPTS -->
+    <script src="{% static 'admin/js/custom.js' %}"></script>
+    <script>
+		{% for msg in messages %} 
+				   
+		   swal("Server Response", "{{msg}}");
+	   {% endfor %} 
+   </script>
+
+
+</body>
+</html>

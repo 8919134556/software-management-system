@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add-Project</title>
+    {% load static %}
+    <!-- BOOTSTRAP STYLES-->
+    <script src="{% static 'admin/js/sweetalert.min.js' %}"></script>
+    <link href="{% static 'admin/css/bootstrap.css' %}" rel="stylesheet" />
+    <!-- FONTAWESOME STYLES-->
+    <link href="{% static 'admin/css/font-awesome.css' %}" rel="stylesheet" />
+       <!--CUSTOM BASIC STYLES-->
+    <link href="{% static 'admin/css/basic.css' %}" rel="stylesheet" />
+    <!--CUSTOM MAIN STYLES-->
+    <link href="{% static 'admin/css/custom.css' %}" rel="stylesheet" />
+    
+    <!-- GOOGLE FONTS-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+</head>
+<body>
+    <div id="wrapper">
+        <div class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Codebook</a>
+            </div>
+
+            <div class="header-right">
+
+                <a href="login.html" class="btn " title="Logout"><i class="fa fa-signin fa-2x"></i></a>
+
+            </div>
+        </div>
+        <!-- /. NAV TOP  -->
+        <div class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+                    <li>
+                        <div class="user-img-div">
+                            <img src="{% static 'admin/img/img_avatar.png' %}" class="img-thumbnail" />
+
+                            <div class="inner-text">
+                                Admin
+                         
+                            </div>
+                        </div>
+
+                    </li>
+
+
+                    <li>
+                        <a  href="admin_dashboard"><i class="fa fa-dashboard "></i>Dashboard</a>
+                    </li>
+                    
+                    <li>
+                        <a href="{% url 'add_employee' %}"><i class="fa fa-plus "></i>Add Employee</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'view_employee' %}"><i class="fa fa-eye "></i>View Employees</a>
+                    </li>
+             <li>
+                <a class="active-menu" href="#"><i class="fa fa-plus "></i>Add Project </a>
+                 
+            </li>
+            <li>
+                <a href="{% url 'admin_view_project' %}"><i class="fa fa-flash "></i>View Projects </a>
+                
+            </li>
+             
+              <li>
+                <a href="{% url 'view_status' %}"><i class="fa fa-line-chart "></i>Project Status</a>
+            </li>
+            
+             
+            <li>
+                <a href="{% url 'admin_login' %}"><i class="fa fa-sign-in "></i>Logout</a>
+            </li> 
+                    
+                 
+                </ul>
+
+            </div>
+        </div>
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper">
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-head-line">ADD PROJECT</h1>
+                        <h1 class="page-subhead-line"> Welcome you on behalf of the team and hope that we will have a fantastic time working together. </h1>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div id="comments-sec">
+
+                                    
+                                    <form method="post" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                                <div class="form-group  ">
+                                                    <label>PROJECT NAME</label>
+                                                    <input type="text" name="project_name" class="form-control" required="required" placeholder="Enter Here" />
+                                                    <label>Strating Date</label>
+                                                    <input type="date" name="start_date" class="form-control" required="required" placeholder="Date" />
+                                                    <label>Ending Date</label>
+                                                    <input type="date" name="end_date" class="form-control" required="required" placeholder="Date" />
+                                                </div>
+                                                <div class="form-group " >
+                                                    
+                                                    <select name="select">
+                                                       
+                                                        <option>Select Manager</option>
+                                                        {% for i in view %}
+                                                        <option>{{i.emp_name}}</option>
+                                                        
+                                                        {% endfor %}
+                                                    </select>
+
+                                                </div>
+                                                <div>
+                                                    <p> Select file to upload:</p>
+                                                        <input type="file" name="document" id="fileToUpload">
+                                                        <a href= "#" input type="submit" value="Upload Image" name="submit"></a>
+                                                    
+                                                </div>
+                                                <br />
+                                                <div class="form-group">
+                                                    <button type="submit" class="btn btn-success"> UPLOAD</button>
+                                                </div>
+                                    </form>
+                                </div>
+        
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+                    
+                  
+                </div>
+                <!-- /. ROW  -->
+                    
+                
+
+
+                    </div>
+                </div>
+                
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+    <!-- /. WRAPPER  -->
+
+    <div id="footer-sec">
+        &copy; 2014 Codebook | Design By : <a href="https://www.codebook.in/" target="_blank">Codebook.in</a>
+    </div>
+    <!-- /. FOOTER  -->
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+    <script src="{% static 'admin/js/jquery-1.10.2.js' %}"></script>
+    <!-- BOOTSTRAP SCRIPTS -->
+    <script src="{% static 'admin/js/bootstrap.js' %}"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="{% static 'admin/js/jquery.metisMenu.js' %}"></script>
+       <!-- CUSTOM SCRIPTS -->
+    <script src="{% static 'admin/js/custom.js' %}"></script>
+    <script>
+		{% for msg in messages %} 
+				   
+		   swal("Server Response", "{{msg}}");
+	   {% endfor %} 
+   </script>
+
+
+</body>
+</html>

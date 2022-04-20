@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Login-Page</title>
+    {% load static %}
+    <link href="{% static 'admin/css/pride.css' %}" rel="stylesheet" />
+    <script src="{% static 'admin/js/sweetalert.min.js' %}"></script>
+</head>
+<body>
+
+    <div class="main">
+        <div class="navbar"  >
+            <div class="menu " style="margin-left:550px" >
+                <ul>
+                    <li><a href="{% url 'home' %}">HOME</a></li>
+                    <li><a href="{% url 'about' %}">ABOUT</a></li>
+                    <li><a href="{% url 'admin_login' %}">ADMIN</a></li>
+                    <li><a href="#">MANAGER</a></li>
+                    <li><a href="{% url 'emp_login' %}">EMPLOYEE</a></li>
+                    <li><a href="{% url 'contact' %}">CONTACTUS</a></li>
+                </ul>
+            </div>  
+
+        </div> 
+        <div class="content">
+            <h1>Software <br><span>Employee</span> <br>Management</h1>
+            <p class="par" style="width: 700px;">Business software, by definition, is an application or a system of tools to help companies support, improve, and automate their processes. If matched well with your business needs, business management software will help manage all your core business processes in one system.
+
+                But whether a small business or a large enterprise, it’s important to keep in mind that any business management software solution should make your work more efficient, not create extra tasks. Unfortunately, 74% of employees say they spend up to an hour a day on data entry and searching for information. That’s why you should be extremely attentive and do proper research when selecting the best software to support your business.</p>
+
+                <button class="cn"><a href="#"> LEARN</a></button>
+
+                <form method="post" enctype="multipart/form-data" class="form">
+                    {% csrf_token %}
+                    <h2>MANAGER</h2>
+                    <input type="email" name="email" placeholder="Enter Email ">
+                    <input type="password" name="password" placeholder="Enter Password ">
+                    
+                    <button type="submit" class="btnn"> Login</button>
+                      <br>
+                      <br>
+                    <a href="{% url 'man_password_reset' %}" algin-text="white">Forget Password?</a>
+
+                </form>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+    <script>
+		{% for msg in messages %} 
+				   
+		   swal("Server Response", "{{msg}}");
+	   {% endfor %} 
+   </script>
+</body>
+</html>

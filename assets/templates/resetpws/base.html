@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Employee-login</title>
+    {% load static %}
+    <link href="{% static 'admin/css/pride.css' %}" rel="stylesheet" />
+    <script src="{% static 'admin/js/sweetalert.min.js' %}"></script>
+</head>
+<body>
+
+    <div class="main">
+        <div class="navbar"  >
+            <div class="menu " style="margin-left:550px" >
+                <ul>
+                    <li><a href="{% url 'home' %}">HOME</a></li>
+                    <li><a href="{% url 'about' %}">ABOUT</a></li>
+                    <li><a href="{% url 'admin_login' %}">ADMIN</a></li>
+                    <li><a href="{% url 'manager_login' %}">MANAGER</a></li>
+                    <li><a href="#">EMPLOYEE</a></li>
+                    <li><a href="{% url 'contact' %}">CONTACTUS</a></li>
+                </ul>
+            </div> 
+
+        </div> 
+		
+        
+		{% block content %}
+		{% endblock %}
+		
+		
+    </div>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+    <script>
+		{% for msg in messages %} 
+				   
+		   swal("Server Response", "{{msg}}");
+	   {% endfor %} 
+    </script>
+</body>
+</html>
